@@ -1,0 +1,9 @@
+{
+  "name": "ECS89H_Recipe",
+  "description": "Node Recipe app for UC Davis ECS89H class",
+  "author": "Evan Chen",
+  "dependencies": {
+    "node-static": "^0.7.6"
+  },
+  "engine": "node 0.12.0"
+}
