@@ -5,10 +5,13 @@
     <title></title>
 </head>
 <body>
-    <form action="dyn/getKeywords">
-        <label for="keywords">Enter ingredients to search for recipes:</label>
-        <input type="text" id="keywords" name="keywords" />
-        <input type="submit" value="Submit">
-    </form>
+
+    <label for="keywords">Enter ingredients to search for recipes:</label>
+    <input type="text" id="keywords" name="keywords" />
+    <button onclick="ajaxCall()">Submit</button>
+
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="assets/js/quantifiedRecipe.js"></script>
 </body>
 </html>

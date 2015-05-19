@@ -8,22 +8,20 @@ var fileServer = new statix.Server('./public');
 function handler(request,response) {
     var urlReceived = request.url; // maybe complex string
     var urlObj = url.parse(urlReceived);
-    var pathname = urlObj.pathname; // maybe simpler string
+    var pathname = urlObj.path; // maybe simpler string
     var parts = pathname.split("/"); // array of strings
 
-    if (parts[1] == "dyn") {  // parts[0] is ""
+    if (parts[1] === "dyn") {  // parts[0] is ""
         dynamic.dynamic(response, parts);
     }
     else {
         request.addListener('end',function () {
-            fileServer.serve(request, response, function (e, res) {
-                fileServer.serveFile('/quantifiedRecipe.html', 200, {}, request, response);
-            });
-
-            //fileServer.serve('/quantifiedRecipe.html', response)
+            fileServer.serve(request, response);
         }).resume();
     }
 }
 
 server = http.createServer(handler);
-server.listen(20008);
+server.listen(20008, function(){
+    console.log("Server started");
+});
