@@ -2,10 +2,10 @@ var recipeObject;
 
 setTimeout(function(){
     $("#title").fadeIn(750);
-}, 0);
+}, 750);
 setTimeout(function(){
     $("#container").fadeIn(750);
-}, 0);
+}, 1250);
 
 $("#keywords").keyup(function (e){
     if(e.keyCode === 13){
