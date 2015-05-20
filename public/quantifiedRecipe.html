@@ -3,15 +3,52 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap/bootstrap-flat.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap/bootstrap-flat-extras.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/quantifiedRecipe.css">
 </head>
 <body>
-
-    <label for="keywords">Enter ingredients to search for recipes:</label>
-    <input type="text" id="keywords" name="keywords" />
-    <button onclick="ajaxCall()">Submit</button>
+    <div id="title">
+        Quantified Recipe Book
+    </div>
+    <div class="row" id="container">
+        <div class="col-lg-4 column">
+            <div class="input-group">
+                <input type="text" id="keywords" class="form-control" name="keywords" placeholder="Enter ingredients to search for recipe"/>
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" onclick="ajaxCall()">Submit</button>
+                </span>
+            </div>
+            <hr>
+            <div id="recipeList">
+                <img id="recipeListLoader" src="assets/img/ajax-loader.gif">
+            </div>
+        </div>
+        <div class="col-lg-8 column">
+            <img id="recipeDescrLoader" src="assets/img/ajax-loader.gif">
+            <div class="row" id="recipeDescrContainer">
+                <div class="col-lg-5 recipeDescrColumn" style="margin-left:30px;margin-right:15px;">
+                    <div id="recipeDescrTitle"></div>
+                    <hr>
+                    <img id="recipeDescrImage" src="">
+                    <hr>
+                    <div id="recipePublisher">Publisher: <span></span></div>
+                    <div id="recipePublisherUrl">Publisher Url:&nbsp;&nbsp;<a href="">Click Here</a></div>
+                    <div id="socialRank">Social Rank:&nbsp;&nbsp;<span class="label label-default"></span></div>
+                </div>
+                <div class="col-lg-6 recipeDescrColumn">
+                    <h4>Ingredients:</h4>
+                    <ul id="recipeIngredients"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="assets/js/bootstrap/bootstrap.min.js"></script>
     <script src="assets/js/quantifiedRecipe.js"></script>
 </body>
 </html>
