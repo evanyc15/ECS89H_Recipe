@@ -1,5 +1,12 @@
 var recipeObject;
 
+setTimeout(function(){
+    $("#title").fadeIn(750);
+}, 0);
+setTimeout(function(){
+    $("#container").fadeIn(750);
+}, 0);
+
 $("#keywords").keyup(function (e){
     if(e.keyCode === 13){
         ajaxCall();
@@ -10,6 +17,16 @@ $("body").on("click", ".recipeSelect", function(event){
     $(".recipeSelect").removeClass("btn-warning");
     $(this).addClass("btn-warning");
     showRecipeDetails($(this).attr("data-id"));
+});
+$("#recipeList").on("scroll", function() {
+    if($(this).scrollTop() + $(this).innerHeight() >= this.scrollHeight) {
+        $("#recipeIconDown").css("visibility","hidden");
+    } else if($(this).scrollTop() === 0) {
+        $("#recipeIconUp").css("visibility","hidden");
+    } else {
+        $("#recipeIconUp").css("visibility", "visible");
+        $("#recipeIconDown").css("visibility", "visible");
+    }
 });
 
 function ajaxCall(){
@@ -38,16 +55,20 @@ function ajaxCall(){
         },
         complete: function(){
             $("#recipeListLoader").hide();
+
+            if($("#recipeList")[0].scrollHeight > $("#recipeList").height()){
+                $("#recipeIconDown").css("visibility","visible");
+            }
         }
     });
 }
 function showRecipeDetails(id) {
-    console.log(id);
+    $("#recipeDescrContainer").hide();
+    $("#recipeDescrLoader").show();
     $.ajax({
         type: 'GET',
         url: "/dyn/getRecipe?getRecipe="+recipeObject[id].recipe_id,
         success: function(response){
-            console.log(response);
             var i;
 
             $("#recipeDescrTitle").text(response.recipe.title);
@@ -59,7 +80,7 @@ function showRecipeDetails(id) {
             for(i = 0; i < response.recipe.ingredients.length; i++){
                 $("#recipeIngredients").append("<li>"+response.recipe.ingredients[i]+"</li>");
             }
-
+            $("#recipeDescrLoader").hide();
             $("#recipeDescrContainer").show();
         }
     });
