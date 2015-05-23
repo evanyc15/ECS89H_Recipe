@@ -9,7 +9,7 @@ body {
     right: 0;
     margin-left: auto;
     margin-right: auto;
-    top: 2%;
+    top: 10px;
     background-color: white;
     padding: 10px 30px 10px 30px;
     font-size: 1.75em;
@@ -31,13 +31,13 @@ body {
 }
 #container {
     position: absolute;
-    height: 750px;
+    height: 625px;
     width: 80vw;
     left: 0;
     right: 0;
     margin-left: auto;
     margin-right: auto;
-    top: 10%;
+    top: 75px;
     background-color: white;
     display: none;
 }
@@ -51,7 +51,7 @@ body {
 }
 @media (min-width: 0px){
     .right {
-        height: 1500px !important;
+        height: 1250px !important;
     }
 }
 @media (min-width: 1200px){
@@ -62,7 +62,7 @@ body {
 #recipeList {
     width: 100%;
     margin-top: 28px;
-    height: 620px;
+    height: 500px;
     overflow-y: scroll;
     border: 1px solid rgba(240, 240, 240, 0.8);
 }
@@ -99,7 +99,7 @@ body {
 }
 .recipeDescrColumn {
     padding: 15px;
-    height: 720px;
+    height: 600px;
     overflow: auto;
     border: 1px solid rgba(230, 230, 230, 0.8);
 }
