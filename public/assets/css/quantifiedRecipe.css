@@ -132,3 +132,13 @@ body {
 #socialRank {
     font-size: 1.3em;
 }
+.waterDroplet {
+    margin-right: 5px;
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+}
+.waterDroplet_Descr {
+    display: inline-block;
+    padding-top:2px;
+}

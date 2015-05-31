@@ -2,10 +2,10 @@ var recipeObject;
 
 setTimeout(function(){
     $("#title").fadeIn(750);
-}, 750);
+}, 300);
 setTimeout(function(){
     $("#container").fadeIn(750);
-}, 1250);
+}, 600);
 
 $("#keywords").keyup(function (e){
     if(e.keyCode === 13){
@@ -45,7 +45,6 @@ function ajaxCall(){
         type: 'GET',
         url: keywordsQuery,
         success: function(response){
-            console.log(response);
             recipeObject = response.recipes;
             var i;
 
@@ -78,7 +77,18 @@ function showRecipeDetails(id) {
             $("#socialRank span").text(response.recipe.social_rank);
             $("#recipeIngredients").empty();
             for(i = 0; i < response.recipe.ingredients.length; i++){
-                $("#recipeIngredients").append("<li>"+response.recipe.ingredients[i]+"</li>");
+                var ingredient = response.recipe.ingredients[i];
+                if(ingredient.indexOf('~~~') > -1){
+                    var water = ingredient.substring(ingredient.indexOf('~~~') + 3, ingredient.length);
+                    ingredient = ingredient.substring(0, ingredient.indexOf('~~~'));
+
+                    $("#recipeIngredients").append("<li>"+ingredient+
+                        "<img src='assets/img/Water_Droplet.png' class='waterDroplet'/>"+
+                        "<div class='waterDroplet_Descr'>"+water+"</div>"+
+                        "</li>");
+                } else {
+                    $("#recipeIngredients").append("<li>"+ingredient+"</li>");
+                }
             }
             $("#recipeDescrLoader").hide();
             $("#recipeDescrContainer").show();

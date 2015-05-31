@@ -2,6 +2,7 @@ var statix = require('node-static');
 var http  = require('http');
 var url = require("url");
 var dynamic = require('./config/dynamic');
+var buildDb = require('./config/buildDB');
 
 var fileServer = new statix.Server('./public');
 
@@ -23,5 +24,5 @@ function handler(request,response) {
 
 server = http.createServer(handler);
 server.listen(20008, function(){
-    console.log("Server started");
+    console.log("Server started, port 20008");
 });

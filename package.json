@@ -4,7 +4,8 @@
   "author": "Evan Chen",
   "dependencies": {
     "node-static": "^0.7.6",
-    "request": "^2.55.0"
+    "request": "^2.55.0",
+    "sqlite3": "^3.0.8"
   },
   "engine": "node 0.12.0"
 }

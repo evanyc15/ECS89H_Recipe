@@ -1,5 +1,6 @@
 // module to handle the dynamic Web pages
 var request = require('request');
+var annotater = require('./annotater');
 
 function dynamic(response, parts) {
 
@@ -25,7 +26,13 @@ function dynamic(response, parts) {
             request(url, function(error, res, body){
                 if(!error && response.statusCode === 200){
                     response.writeHead(200, {"Content-Type": "application/json"});
-                    response.end(body);
+                    // Begin recipe annotation to add water usages to ingredients of recipes
+                    annotater.openDB();
+                    var annotate = new annotater.Annotater(body);
+                    annotate.annotate(function(body){
+                        response.end(body);
+                    });
+                    annotater.closeDB();
                 } else {
                     console.log(error);
                 }

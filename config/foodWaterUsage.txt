@@ -1,0 +1,6 @@
+11,"flour",2217
+14,"bread",1928
+17,"pasta,spaghetti,noodles,penne",2217
+35,"brown rice",1890
+38,"rice",2100
+44,"rice flour",2285
